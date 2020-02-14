@@ -12,5 +12,6 @@ if __name__ == "__main__":
         isCarFunc = 0
         for car in carList:
             rides = car.update(rides)
+            Car.step +=1
 
     writer("result.in", carList)

@@ -32,7 +32,6 @@ class Car:
                 rides[closest][6] = 1
             else:
                 print("stop")
-        Car.step+=1
         return rides
 
     def distance(self, a,b): #target is (x,y)
@@ -43,10 +42,10 @@ class Car:
             closest = (20001,-1) #distance, idRide
             timeneeded = abs(rides[ride][2]-rides[ride][0])+abs(rides[ride][3]-rides[ride][1])
             if rides[ride][6] == 0:
-                if self.distance(rides[ride][0],rides[ride][1]) < closest[0]:
-                    if self.distance(rides[ride][0],rides[ride][1])+timeneeded+Car.step < rides[ride][5]:
-                        closest = (self.distance(rides[ride][0],rides[ride][1]),ride)
 
+                if self.distance(rides[ride][0],rides[ride][1]) < closest[0]:
+                    if (self.distance(rides[ride][0],rides[ride][1])+timeneeded+Car.step) < rides[ride][5]:
+                        closest = (self.distance(rides[ride][0],rides[ride][1]),ride)
         return closest[1]
 
     def move(self,a,b):
