@@ -14,7 +14,8 @@ class Car:
         self.occupation = idRide
         self.target = (ride(0), ride(1))
     def update(self, rides):
-
+        if self.occupation != 1:
+            self.move(ride[2],ride[3])
         if self.occupation == -1:
             closest = self.findClosestAcceptable()
             if closest != -1:
@@ -26,11 +27,22 @@ class Car:
         return abs(self.pos[0]-a)+abs(self.pos[1]-b)
     def findClosestAcceptable(self, rides):
         for ride in rides:
-            closest = (0,-1) #distance, idRide
+            closest = (20001,-1) #distance, idRide
+            timeneeded = abs(rides[ride][2]-rides[ride][0])+abs(rides[ride][3]-rides[ride][1])
             if rides[ride][6] == 0:
                 if self.distance(rides[ride][0],rides[ride][1]) < closest[0]:
-                    closest = (self.distance(rides[ride][0],rides[ride][1]),ride)
+                    if self.distance(rides[ride][0],rides[ride][1])+timeneeded < rides[ride][5]:
+                        closest = (self.distance(rides[ride][0],rides[ride][1]),ride)
         return closest[1]
-
-
+    def move(self,a,b):
+        while self.pos[0]!=a:
+            if self.pos[0] < a:
+                self.pos[0]+=1
+            elif self.pos[0] > b:
+                self.pos[0] -=1
+        while self.pos[1]!=b:
+            if self.pos[1] < b:
+                self.pos[1]+=1
+            elif self.pos[1] > b:
+                self.pos[1]-=1
 
