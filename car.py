@@ -46,7 +46,7 @@ class Car:
         while self.pos[0]!=a:
             if self.pos[0] < a:
                 self.pos[0]+=1
-            elif self.pos[0] > b:
+            elif self.pos[0] > a:
                 self.pos[0] -=1
         while self.pos[1]!=b:
             if self.pos[1] < b:
