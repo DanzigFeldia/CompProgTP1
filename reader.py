@@ -7,6 +7,7 @@ def reader(filePath):
         i=0
         for line in lines[1:len(lines)-1]:
             rides[i] = str(line).split()
+            rides[i].append(0) #0 = libre, 1 = pris en charge
             i += 1
 
     return (R,C,F,N,B,T, rides)
