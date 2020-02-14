@@ -15,7 +15,15 @@ class Car:
         self.target = (ride(0), ride(1))
     def update(self, rides):
         if self.occupation != 1:
-            self.move(ride[2],ride[3])
+            self.move(self.target)
+            if self.pos == self.target:
+                if self.inRides == 0:
+                    self.target = (rides[self.occupation][0],rides[self.occupation][1])
+                elif self.inRides == 1:
+                    self.rCompleted.append(self.occupation)
+                    self.occupation = -1
+                else:
+                    print("error")
         if self.occupation == -1:
             closest = self.findClosestAcceptable()
             if closest != -1:
