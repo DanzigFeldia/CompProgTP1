@@ -3,7 +3,7 @@ class Car:
     step = 0
     score = 0
     bonus = 0
-    bonusMultiplier = 0.8
+    bonusMultiplier = 0.8 #the lower it is, the more important bonuses are
 
     def __init__(self, B):
         self.id = Car.nb_car
