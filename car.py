@@ -23,17 +23,18 @@ class Car:
             Car.score += Car.bonus
     def update(self, rides):
         if self.occupation != -1:
-            self.move(self.target[0],self.target[1])
-            if self.pos == self.target:
-                if self.inRides == 0:
-                    self.target = (rides[self.occupation][0],rides[self.occupation][1])
-                    self.inRides = 1
-                elif self.inRides == 1:
-                    self.inRides =0
-                    self.rCompleted.append(self.occupation)
-                    self.occupation = -1
-                else:
-                    print("error")
+            if Car.step >= rides[self.occupation][4]:
+                self.move(self.target[0],self.target[1])
+                if self.pos == self.target:
+                    if self.inRides == 0:
+                        self.target = (rides[self.occupation][0],rides[self.occupation][1])
+                        self.inRides = 1
+                    elif self.inRides == 1:
+                        self.inRides =0
+                        self.rCompleted.append(self.occupation)
+                        self.occupation = -1
+                    else:
+                        print("error")
         if self.occupation == -1:
             closest = self.findClosestAcceptable(rides)
             if closest != -1:
