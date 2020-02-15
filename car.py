@@ -3,6 +3,7 @@ class Car:
     step = 0
     score = 0
     bonus = 0
+    bonusMultiplier = 0.8
 
     def __init__(self, B):
         self.id = Car.nb_car
@@ -48,9 +49,13 @@ class Car:
         closest = (20001, -1)  # distance, idRide
         for ride in rides:
 
-            timeneeded = abs(rides[ride][2]-rides[ride][0])+abs(rides[ride][3]-rides[ride][1])
+
             if rides[ride][6] == 0:
-                if self.distance(rides[ride][0],rides[ride][1]) < closest[0]:
+                distance = self.distance(rides[ride][0],rides[ride][1])
+                if (self.distance(rides[ride][0],rides[ride][1])+Car.step) <= rides[ride][4]:
+                    distance *= Car.bonusMultiplier
+                if distance < closest[0]:
+                    timeneeded = abs(rides[ride][2] - rides[ride][0]) + abs(rides[ride][3] - rides[ride][1])
                     if ((self.distance(rides[ride][0],rides[ride][1])+timeneeded+Car.step) <= rides[ride][5]):
                         closest = (self.distance(rides[ride][0],rides[ride][1]),ride)
 
