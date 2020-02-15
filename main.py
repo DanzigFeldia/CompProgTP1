@@ -12,7 +12,7 @@ if __name__ == "__main__":
         print(Car.step)
         isCarFunc = 0
         for car in carList:
-            rides = car.update(rides)
+            car.update(rides)
             if car.occupation != -1:
                 isCarFunc +=1
         if isCarFunc == 0:
